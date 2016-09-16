@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 { text-align: center;
+     color: royalblue;
+   }
+title{ color: blue;}
+
+</style>
+<title> COLOUR GUESSING GAME</title>
+</head>
+  <body onload="do_game()">
+        <script  type="text/javascript">
+        var colour=["red", "blue", "green", "yellow", "orange", "gray", "black", "brown",
+                   "lime", "purple", "magenta", "violet", "indigo", "gold", "silver",
+        					 "copper", "coffee", "lightblue", "white", "maroon", "cyan", "navy"]
+        var num;
+        var guess=0;
+        var finish=false;
+        var get_num;
+
+        function do_game()
+        { colour.sort();
+        	var num2= Math.random()*colour.length;
+        	num= Math.floor(num2);
+           	while(!finish)
+        	{
+        	alert("Welcome to Guess The COLOUR!!"+"\n\n"+"I am thinking about a colour.\n\n"+ colour.join(",  ") +
+        	"\n\n"+ "Can you guess which colour is it?");
+        	var get_input_text=prompt("Enter your answer from the above colors");
+        	get_num= colour.indexOf(get_input_text);
+        	guess+=1;
+        	finish= check_guess(get_num);
+        	}
+        }
+
+
+        function check_guess()
+        {
+        		if (get_num < 0)
+        	{
+        		alert("I DIDN'T RECOGNISE THE COLOR!");
+        	    return false;
+        	}
+         		if(get_num > num)
+        	{
+        		alert("SORRY!!! your COLOUR's initial is too big than mine.. please try again!!!");
+        		return false;
+        	}
+
+        		if(get_num < num)
+        	{   alert("SORRY!!!  your COLOUR's initial is too small.. please try again !!!");
+            	return false;
+        	}
+
+        		if(get_num == num)
+        		elem_body = document.getElementsByTagName("body")[0];
+        		elem_body.style.background = colour[num];
+
+        		alert("CONGRATULATIONS!!!!! :D :) :) "+"\n \n"+ "You guessed the colour.."+"\n \n"
+        	     + "the correct colour is: " + colour[num] +"\n\n"+"You required "+ guess +" guesses to WIN ");
+        	return true;
+
+        }
+
+       </script>
+
+       <h1><b><i> CONGRATULATIONS </i></b>...!!!!</h1>
+</body>
+</html>
